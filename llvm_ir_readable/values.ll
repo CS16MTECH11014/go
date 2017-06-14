@@ -14,9 +14,7 @@ target triple = "x86_64-unknown-linux-gnu"
 %imethod = type { { i8*, i64 }*, { i8*, i64 }*, %commonType* }
 %sliceType = type { %commonType, %commonType* }
 
-@__go_type_hash_empty_interface = external global i64 (i8*, i64)
 @__go_type_hash_empty_interface_descriptor = external global %funcVal
-@__go_type_equal_empty_interface = external global i8 (i8*, i8*, i64)
 @__go_type_equal_empty_interface_descriptor = external global %funcVal
 @__go_type_hash_float_descriptor = external global %funcVal
 @__go_type_equal_float_descriptor = external global %funcVal
@@ -83,6 +81,10 @@ target triple = "x86_64-unknown-linux-gnu"
 
 ; Function Attrs: nounwind
 declare i8* @__go_new(i8* nest, i8*, i64) #0
+
+declare i64 @__go_type_hash_empty_interface(i8*, i64)
+
+declare i8 @__go_type_equal_empty_interface(i8*, i8*, i64)
 
 define void @main..import(i8* nest) #1 !dbg !5 {
 prologue:
@@ -388,7 +390,7 @@ attributes #1 = { "disable-tail-calls"="true" "split-stack" }
 !llvm.module.flags = !{!3, !4}
 
 !0 = distinct !DICompileUnit(language: DW_LANG_Go, file: !1, producer: "llgo", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, enums: !2)
-!1 = !DIFile(filename: "go_programs/values.go", directory: "/home/arpit/IIT/Project/cbmc_llvm/sample_go_programs")
+!1 = !DIFile(filename: "go_programs/values.go", directory: "/home/arpit/IIT/Project/cbmc_llvm/go")
 !2 = !{}
 !3 = !{i32 2, !"Dwarf Version", i32 4}
 !4 = !{i32 1, !"Debug Info Version", i32 3}
